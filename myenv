@@ -1,4 +1,0 @@
-     1	my home is /root
-     2	my prompt is [\[\e[;31m\]\u\[\e[m\]@\[\e[1;32m\]\h\[\e[m\] \[\e[1;36m\]\w\[\e[m\]]\$ 
-     3	current directory is 'pwd'
-     4	today is 'date'
