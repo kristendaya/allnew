@@ -1,4 +1,4 @@
 #!/bin/bash
 
-str="AAABBBCCC"
-echo ${str#A*B}
+str="AAABBBBCCCBCCC"
+echo ${str##A*B}
