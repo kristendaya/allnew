@@ -22,3 +22,6 @@ maven/targets
 ##nodejs
 node/**/node_modules
 
+##python
+python/**/.venv
+python/**/__pycache__/
