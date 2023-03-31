@@ -11,3 +11,7 @@ c/**/test
 ## java
 
 java/*.class
+
+##scala
+scala/**/project
+scala/**/target
