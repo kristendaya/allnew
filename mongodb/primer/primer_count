@@ -1,0 +1,3 @@
+use test
+db.primer.count()
+db.pirmer.findOne()
