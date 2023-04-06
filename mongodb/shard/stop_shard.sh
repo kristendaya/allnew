@@ -1,9 +1,9 @@
 #!/bin/bash
  
-config=$(ps -ef | grep 'mongoConfig')
-router=$(ps -ef | grep 'mongoRouter')
-shard1=$(ps -ef | grep 'mongoShard1')
-shard2=$(ps -ef | grep 'mongoShard2')
+config=$(ps -ef | grep 'mongodConfig')
+router=$(ps -ef | grep 'mongodRouter')
+shard1=$(ps -ef | grep 'mongodShard1')
+shard2=$(ps -ef | grep 'mongodShard2')
 
 
 second1=$(echo ${config} | cut -d " " -f2)
