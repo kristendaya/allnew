@@ -1,4 +1,4 @@
-# .gitignore
+## .gitignore
 
 .ftpconfig
 
@@ -9,25 +9,30 @@ c/**/*.o
 c/**/test
 
 ## java
-
 java/*.class
 
-##scala
+## scala
 scala/**/project
 scala/**/target
 
-##maven
-maven/targets
+## maven
+maven/target
 
-##nodejs
+## nodejs
 node/**/node_modules
+node/**/package-lock.json
 
-##python
+## python
 python/**/.venv
 python/**/__pycache__/
 
-#Oracle
+## mongodb
+mongodb/*.json
+mongodb/**/*.json
+mongodb/**/*.mp4
+mongodb/backup
+
+## oracle
 oracle/node/dbConfig.js
 oracle/node/node_modules
 oracle/node/package-lock.json
-
