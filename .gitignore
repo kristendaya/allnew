@@ -25,3 +25,9 @@ node/**/node_modules
 ##python
 python/**/.venv
 python/**/__pycache__/
+
+#Oracle
+oracle/node/dbConfig.js
+oracle/node/node_modules
+oracle/node/package-lock.json
+
