@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>다민택시서비스</title>
+</head>
+
+<body>
+    <h3>다민택시서비스</h3>
+    <hr />
+    <form action="/insert" target="targetURL" method = "post" name="userForm">
+
+        <p>Userid : <input type="text" size="15" name="id" /> <br /></p>
+        <p></p>Password : <input type="password" size="15" name="pw" /> <br /></p>
+        <input type="button" 
+        value="get select"
+        onclick='document.targetURL.location.href="/select"' />
+         <input type="button" 
+         value="get selectQuery" 
+         onclick='document.targetURL.location.href="/selectQuery?userid=" 
+         +document.userForm.id.value' />&nbsp;&nbsp;
+         <input type="submit" value ="post instert" /> 
+         <button type="submit" formaction="/update">update</button>
+        <button type="submit" formaction="/delete">delete</button>
+         
+
+    </form>
+    <hr />
+    <iframe name="targetURL" 
+    width="70%" 
+    height="500" 
+    style="border:none" 
+    src="/hello">;
+</iframe>&nbsp;&nbsp;
+
+</body>
+
+</html>
