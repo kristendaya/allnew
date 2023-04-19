@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <script>
+        function checkWinner() {
+            let mychoice = null;
+            let myrsp = document.getElementsByName("rsp");
+            let comchoice = Math.floor(Math.random() * 3)
+            var result = "";
+
+            // 사용자 선택 값
+            for (let i = 0; i < myrsp.length; i++) {
+                if (myrsp[i].checked == true) {
+                    mychoice = i;
+                }
+            }
+
+            // 미입력시
+            if (mychoice == null) {
+                alert("가위, 바위, 보 중 하나를 선택해주세요!");
+                return;
+            }
+
+            // 게임 결과
+            if (mychoice == comchoice) {
+                result = "비겼습니다!";
+            } else if (
+                (mychoice == 0 && comchoice == 1) ||
+                (mychoice == 1 && comchoice == 2) ||
+                (mychoice == 2 && comchoice == 0)
+            ) {
+                result = "Computer is Winner!!";
+            } else {
+                result = "You're the Winner!!";
+            }
+
+            var rsp = ["가위", "바위", "보"];
+
+            alert(
+                "컴퓨터의 선택 : " +
+                rsp[comchoice] +
+                "     당신의 선택 : " +
+                rsp[mychoice] +
+                "     " +
+                result
+            );
+        }
+    </script>
+</head>
+
+<body>
+    <h3>NEW 가위바위보</h3>
+    <hr />
+    <form>
+        <input type="radio" name="rsp" value="0" />가위
+        <input type="radio" name="rsp" value="1" />바위
+        <input type="radio" name="rsp" value="2" />보&nbsp;&nbsp;&nbsp;
+        <input type="button" value="Who's the Winner" onclick="checkWinner()" />
+    </form>
+</body>
+
+</html>
