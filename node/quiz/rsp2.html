@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>가위바위보 게임</title>
+    <script>
+        function playGame() {
+            // 사용자의 선택을 가져옴
+            let rsp = document.getElementsByName("rsp");
+            let found = null;
+            for (let i = 0; i < rsp.length; i++) {
+                if (rsp[i].checked) {
+                    found = rsp[i];
+                }
+            }
+            if (found != null)
+                alert(found.value + "이 선택되었음");
+            else
+                alert("선택된 것이 없음")
+        }
+
+        // 컴퓨터의 선택을 무작위로 생성
+        let com = Math.floor(Math.random() * 3); // 0, 1, 2 중 하나 반환
+        let result = "";
+
+        // 승자를 결정
+        if (rsp == com) {
+            result = "비겼습니다!";
+        } else if ((rsp == 0 && com == 1) ||
+            (rsp == 1 && com == 2) ||
+            (rsp == 2 && com == 0)) {
+            result = "컴퓨터가 이겼습니다!";
+        } else {
+            result = "축하합니다! 이겼습니다!";
+        }
+
+        // 결과를 사용자에게 보여줌
+        let choiceLabels = ["가위", "바위", "보"];
+        let userChoiceLabel = choiceLabels[userChoice];
+        let computerChoiceLabel = choiceLabels[computerChoice];
+        alert("사용자: " + userChoiceLabel + ", 컴퓨터: " +
+            computerChoiceLabel + ". " + result);
+
+    </script>
+</head>
+
+<body>
+    <h3>가위바위보 게임</h3>
+    <hr>
+    <form>
+        <input type="radio" name="rsp" value="0">가위
+        <input type="radio" name="rsp" value="1">바위
+        <input type="radio" name="rsp" value="2">보
+        <input type="button" value="게임하기" onclick="playGame()">
+    </form>
+</body>
+
+</html>

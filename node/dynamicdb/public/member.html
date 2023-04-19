@@ -3,24 +3,30 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>회원정보관리페이지</title>
+    <title>다민택시서비스</title>
 </head>
-<link type="text/css" rel="stylesheet" href="member.css" />
 
 <body>
-    <h3>회원정보관리페이지</h3>
+    <h3>다민택시서비스</h3>
     <hr />
-    <form action="/insert" target="targetURL" name="userForm" method="post">
-        <p>Userid : <input type="text" size="15" name="id" /></p>
-        <p>Password : <input type="password" size="15" name="pw" /></p>
-        <input type="button" value="고객리스트" onclick='document.targetURL.location.href="/select"' />&nbsp;&nbsp;
-        <input type="button" value="고객조회"
-            onclick='document.targetURL.location.href="/selectQuery?id="+document.userForm.id.value' />&nbsp;&nbsp;
-        <input type="submit" value="고객등록" />&nbsp;&nbsp;
-        <button type="submit" formaction="/update">고객업데이트</button>&nbsp;
-        <button type="submit" formaction="/delete">고객삭제</button>
+    <form action="/insert" target="targetURL" method="post" name="userForm">
+
+        <p>Userid : <input type="text" size="15" name="id" /> <br /></p>
+        <p></p>Password : <input type="password" size="15" name="pw" /> <br /></p>
+        <input type="button" value="get select" onclick='document.targetURL.location.href="/select"' />
+        <input type="button" value="get selectQuery" onclick='document.targetURL.location.href="/selectQuery?id=" 
+         +document.userForm.id.value' />&nbsp;&nbsp;
+        <input type="submit" value="post instert" />
+        <button type="submit" formaction="/update">update</button>
+        <button type="submit" formaction="/delete">delete</button>
+
+
     </form>
     <hr />
+    <iframe name="targetURL" width="70%" height="500" style="border:none" src="/hello">;
+
+
+    </iframe>&nbsp;&nbsp;
 
 </body>
 
