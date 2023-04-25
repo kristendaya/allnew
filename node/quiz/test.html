@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>팰린드롬 확인</title>
+</head>
+
+<body>
+    <h3>Check Palindrome</h3>
+    <hr>
+    <label for="inputNumber">3자리 숫자 입력:</label>
+    <input type="number" id="inputNumber" min="100" max="999">
+    <button onclick="checkPalindrome()">확인</button>
+    <br><br>
+    <div id="result"></div>
+    <script>
+        function checkPalindrome() {
+            let input = document.getElementById("inputNumber").value;
+            if (input.length != 3) {
+                document.getElementById("result").innerHTML = "3자리 숫자를 입력하세요.";
+            } else {
+                const firstDigit = Math.floor(input / 100);
+                const lastDigit = input % 10;
+                if (firstDigit == lastDigit) {
+                    document.getElementById("result").innerHTML = "팰린드롬 입니다~~~~~";
+                } else {
+                    document.getElementById("result").innerHTML = "이것은 팰린드롬이 아닙니다~";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

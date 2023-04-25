@@ -13,6 +13,10 @@
             //floor 는 버린다 
             var result = ""
 
+            // alert(myrsp[1].value)
+            //alert(typeof rsp_v);
+            //alert(typeof Number(rsp_v));
+
             //사용자선택값
             for (let i = 0; i < myrsp.length; i++) {
                 if (myrsp[i].checked == true) {
@@ -20,14 +24,11 @@
                 }
             }
 
-
             //미입력시
             if (user == null) {
                 alert("가위,바위,보 중 하나를 선택해주세요!");
                 return;
             }
-
-
 
             //게임결과
 
@@ -56,7 +57,6 @@
         }
     </script>
 </head>
-
 
 
 <form>

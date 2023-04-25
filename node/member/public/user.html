@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
 
+
+
 <head>
     <meta charset="utf-8" />
     <title>로그인 성공!</title>
+    <nav id="menubar">
+
+        <ul>
+            <li><a href="/index.html">HOME</a></li>
+            <li><a href="/user.html">ABOUT ICECREAMWORLD</a></li>
+            <li style="float:right;"><a href="/index.html">LOGOUT</a></li>
+
+        </ul>
+    </nav>
 
     <style>
         #menubar {
@@ -38,27 +49,60 @@
             /* 마우스 올라 갈 때 색 */
         }
     </style>
+
+    <script>
+        let id = "";
+        let now = "";
+        function getParameter(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null
+                ? ""
+                : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function sessionStore() {
+            if (!window.sessionStorage) {
+                alert("세션 스토리지를 지원하지 않습니다.");
+                return;
+            } else {
+                if (id == "") {
+                    alert("잘못된 접근 방식입니다!!");
+                    sessionStorage.removeItem("");
+                    location.href = "login.html";
+                } else {
+                    for (var i = 0; i < sessionStorage.key.length; i++) {
+                        if (id == sessionStorage.key(i)) {
+                            sessionStorage.setItem(id, now);
+                            return;
+                        }
+                        sessionStorage.setItem(id, now);
+                        alert(`사용자 ${id} 님이 로그인 하셨습니다.`);
+                    }
+                }
+            }
+        }
+        window.addEventListener("beforeunload", (event) => {
+            event.preventDefault();
+            event.returnValue = "";
+        });
+
+        function logout() {
+            sessionStorage.removeItem(id);
+        }
+    </script>
 </head>
 
-<body>
-
-    <nav id="menubar">
-        <ul>
-            <li><a href="/index">HOME</a></li>
-            <li><a href="/main">ABOUT ICECREAMWORLD</a></li>
-            <li><a href="/index">LOGOUT <a style="float:right;" </a> </li>
-
-        </ul>
-    </nav>
-    <h3>
-        환영합니다 (ﾉ◕ヮ◕)ﾉ*✲ﾟ*｡⋆ </h3>
-    <h4></h4>
-    <img src="smile.jpg"><br><br>
+<body onload="login()" onunload="logout()">
 
 
 
+    <h3>환영합니다 (ﾉ◕ヮ◕)ﾉ*✲ﾟ*｡⋆</h3>
+    <h4>
+        <img src="smile.jpg"><br><br>
+    </h4>
     <hr />
-
 </body>
 
 </html>

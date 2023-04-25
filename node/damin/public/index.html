@@ -8,21 +8,21 @@
         body {
             background-color: yellow;
             text-align: center;
-            
+
         }
     </style>
 </head>
 
 <body>
-    <h3>다민TAXI서비스 회원조회</h3>
+    <h3>다민TAXI서비스 회원조회 </h3>
 
 
     <hr />
     <form action="/insert" target="targetURL" method="post" name="userForm">
-        <p>전화번호 <input type="text"  size="15" name="id" /> <br /></p>
+        <p>Mobile <input type="text" size="15" name="id" /> <br /></p>
         <p></p>name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size="15" name="name" /> <br /></p>
-        <p></p>addr &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="15"  name="addr" /> <br /></p>
-        <p></p>favor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="15"  name="favor" /> <br /></p>
+        <p></p>addr &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="15" name="addr" /> <br /></p>
+        <p></p>type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="15" name="favor" /> <br /></p>
         <input type="button" value="select" onclick='document.targetURL.location.href="/select"' />
         <input type="button" value="selectQuery" onclick='document.targetURL.location.href="/selectQuery?userid=" 
          +document.userForm.id.value' />&nbsp;&nbsp;

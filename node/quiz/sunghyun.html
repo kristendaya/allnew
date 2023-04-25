@@ -12,16 +12,11 @@
         input {
             text-align: right;
         }
-
-        #total-box {
-            border: 3px dotted darkcyan;
-            width: 500px;
-            margin: auto;
-        }
     </style>
     <script>
         function check_palindrome() {
             let value = document.getElementById('targetBox').value;
+            // string으로 바로 뽑기위해 .value를 넣어줌 
             let result = document.getElementById('result')
             let value_len = value.length
             let text = "";
@@ -33,16 +28,6 @@
             if (value[0] == value[value_len - 1]) text = 'palindrome 입니다!<br>';
             else text = `첫번째 '${value[0]}' 와 마지막 '${value[value_len - 1]}' 가 달라서,<br>
                         palindrome 이 아닙니다.`
-            // for (let i = 0; i <= value_len / 2; i++) {
-            //     if (value[i] != value[value_len - i - 1]) {
-            //         text = `${value[i]} 와 ${value[value_len - i - 1]} 이 다릅니다`;
-            //         break;
-            //     }
-            //     else {
-            //         if (i == Math.floor(value_len / 2)) text += `palindrome 입니다!<br>`
-            //         else text += `첫번째 ${value[i]} 와 마지막 ${value[value_len - i - 1]} 이 같습니다. 통과!<br>`
-            //     }
-            // }
 
             result.innerHTML = text;
         }
@@ -59,7 +44,6 @@
         </div>
         <div>
             <p id="result">
-                이야
             </p>
         </div>
     </div>

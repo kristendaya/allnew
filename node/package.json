@@ -1,7 +1,6 @@
 {
   "name": "node",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +15,9 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
+    "mysql2": "^3.2.3",
     "request": "^2.88.2",
     "sync-mysql": "^3.0.1"
-  }
+  },
+  "description": ""
 }

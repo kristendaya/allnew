@@ -23,6 +23,7 @@ maven/target
 ## nodejs
 node/**/node_modules
 node/**/package-lock.json
+node/config/pool.js
 
 ## python
 python/**/.venv

@@ -18,30 +18,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-// login
-app.post('/login', (req, res) => {
-    const { id, pw } = req.body;
-    const result = connection.query("select * from user where userid=? and passwd=?", [id, pw]);
-    // console.log(result);
-    if (result.length == 0) {
-        res.redirect('error.html')
-    }
-    if (id == 'admin' || id == 'root') {
-        console.log(id + " => Administrator Logined")
-        res.redirect('member.html?id=' + id);
-    } else {
-        console.log(id + " => User Logined")
-        res.redirect('user.html?id=' + id)
-    }
-})
 
-// register
+//register
 app.post('/register', (req, res) => {
-    const { mobile, passwd } = req.body;
+    const { id, pw, usr, cartype, area } = req.body;
     if (id == "") {
         res.redirect('register.html')
     } else {
-        let result = connection.query("select * from user where mobile=?", [mobile]);
+        let result = connection.query("select * from taxitbl where id=?", [id]);
         if (result.length > 0) {
             res.writeHead(200);
             var template = `
@@ -62,23 +46,18 @@ app.post('/register', (req, res) => {
         `;
             res.end(template);
         } else {
-            result = connection.query("insert into user values (?, ?)", [id, pw]);
+            result = connection.query("insert into taxitbl values (?, ?,?,?,?)", [id, pw, usr, cartype, area]);
             console.log(result);
-            res.redirect('/');
+            res.send(result);
         }
     }
 })
 
-// request O, query X
-app.get('/select', (req, res) => {
-    const result = connection.query('select * from user');
-    console.log(result);
-    res.send(result);
-})
+
 
 // request O, query X
-app.post('/select', (req, res) => {
-    const result = connection.query('select * from user');
+app.get('/select', (req, res) => {
+    const result = connection.query('select * from taxitbl');
     console.log(result);
     res.send(result);
 })
@@ -86,7 +65,7 @@ app.post('/select', (req, res) => {
 // request O, query O
 app.get('/selectQuery', (req, res) => {
     const id = req.query.id;
-    const result = connection.query("select * from user where userid=?", [id]);
+    const result = connection.query("select * from taxitbl where id=?", [id]);
     console.log(result);
     res.send(result);
 })
@@ -95,23 +74,23 @@ app.get('/selectQuery', (req, res) => {
 app.post('/selectQuery', (req, res) => {
     const id = req.body.id;
     // console.log(req.body);
-    const result = connection.query("select * from user where userid=?", [id]);
+    const result = connection.query("select * from taxitbl where id=?", [id]);
     console.log(result);
     res.send(result);
 })
 
 // request O, query O
 app.post('/insert', (req, res) => {
-    const { id, pw } = req.body;
-    const result = connection.query("insert into user values (?, ?)", [id, pw]);
+    const { id, pw, usr, cartype, area } = req.body;
+    const result = connection.query("insert into taxitbl values (?, ?,?,?,?)", [id, pw, usr, cartype, area]);
     console.log(result);
     res.redirect('/selectQuery?id=' + req.body.id);
 })
 
 // request O, query O
 app.post('/update', (req, res) => {
-    const { id, pw } = req.body;
-    const result = connection.query("update user set passwd=? where userid=?", [pw, id]);
+    const { id, pw, cartype, area } = req.body;
+    const result = connection.query("update taxitbl set pw=?, cartype=?, area=? where id=?", [id, pw, cartype, area]);
     console.log(result);
     res.redirect('/selectQuery?id=' + req.body.id);
 })
@@ -119,7 +98,7 @@ app.post('/update', (req, res) => {
 // request O, query O
 app.post('/delete', (req, res) => {
     const id = req.body.id;
-    const result = connection.query("delete from user where userid=?", [id]);
+    const result = connection.query("delete from texitbl where id=?", [id]);
     console.log(result);
     res.redirect('/select');
 })
