@@ -230,7 +230,8 @@ app.post('/update', (req, res) => {
     } else {
       const result = connection.query("update user set passwd=? where userid=?", [pw, id]);
       console.log(result);
-      res.redirect('/selectQuery?id=' + id);
+      res.send({ 'ok': true, 'user': id, 'job': 'delete' })
+      // res.redirect('/selectQuery?id=' + id);
     }
   }
 })
@@ -250,7 +251,9 @@ app.post('/delete', (req, res) => {
     } else {
       const result = connection.query("delete from user where userid=?", [id]);
       console.log(result);
-      res.redirect('/select');
+      res.send({ 'ok': true, 'user': id, 'job': 'delete' })
+      // res.redirect('/select');
+
     }
   }
 })
