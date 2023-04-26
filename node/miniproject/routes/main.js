@@ -82,7 +82,7 @@ app.post('/selectQuery', (req, res) => {
 // request O, query O
 app.post('/insert', (req, res) => {
     const { id, pw, usr, cartype, area } = req.body;
-    const result = connection.query("insert into taxitbl values (?, ?,?,?,?)", [id, pw, usr, cartype, area]);
+    const result = connection.query("insert into taxitbl values (?,?,?,?,?)", [id, pw, usr, cartype, area]);
     console.log(result);
     res.redirect('/selectQuery?id=' + req.body.id);
 })
