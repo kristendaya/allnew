@@ -59,7 +59,8 @@ app.post('/register', (req, res) => {
 app.get('/select', (req, res) => {
     const result = connection.query('select * from taxitbl');
     console.log(result);
-    res.send(result);
+    res.send({ 'ok': true, 'job': 'select' })
+    // res.send(result);
 })
 
 // request O, query O
@@ -67,7 +68,8 @@ app.get('/selectQuery', (req, res) => {
     const id = req.query.id;
     const result = connection.query("select * from taxitbl where id=?", [id]);
     console.log(result);
-    res.send(result);
+    res.send({ 'ok': true, 'user': id, 'job': 'select' })
+    // res.send(result);
 })
 
 // request O, query O
@@ -84,6 +86,7 @@ app.post('/insert', (req, res) => {
     const { id, pw, usr, cartype, area } = req.body;
     const result = connection.query("insert into taxitbl values (?,?,?,?,?)", [id, pw, usr, cartype, area]);
     console.log(result);
+    res.send({ 'ok': true, 'user': id, 'job': 'insert' })
     res.redirect('/selectQuery?id=' + req.body.id);
 })
 
@@ -92,15 +95,30 @@ app.post('/update', (req, res) => {
     const { id, pw, cartype, area } = req.body;
     const result = connection.query("update taxitbl set pw=?, cartype=?, area=? where id=?", [id, pw, cartype, area]);
     console.log(result);
+    res.send({ 'ok': true, 'user': id, 'job': 'update' })
     res.redirect('/selectQuery?id=' + req.body.id);
 })
 
 // request O, query O
 app.post('/delete', (req, res) => {
     const id = req.body.id;
-    const result = connection.query("delete from texitbl where id=?", [id]);
-    console.log(result);
-    res.redirect('/select');
+    if (id == "") {
+        res.send('User-id를 입력하세요.')
+    } else {
+        const result = connection.query("select * from taxitbl where id=?", [id]);
+        console.log(result);
+        // res.send(result);
+        if (result.length == 0) {
+            template_nodata(res)
+        } else {
+            const result = connection.query("delete from taxitbl where id=?", [id]);
+            console.log(result);
+            res.send({ 'ok': true, 'user': id, 'job': 'delete' })
+            // res.redirect('/select');
+
+        }
+    }
 })
+
 
 module.exports = app;
