@@ -9,7 +9,7 @@ app.set('port', process.env.Port || 8000);
 app.use(morgan('dev'));
 
 var db;
-var databaseUrl = "mongodb://192.168.1.13:27017";
+var databaseUrl = "mongodb://192.168.1.18:27017";
 
 app.get('/', (req, res) => {
     res.send("Web server Started~!!");
@@ -21,7 +21,7 @@ app.get('/things', (req, res) => {
             res.json({ 'count': 0 })
         } else {
             db = database.db('test')
-            db.collection('things').find({}).toArray(function (err, result) {
+            db.collection('taxidb').find({}).toArray(function (err, result) {
                 if (err) throw err
                 console.log('result : ')
                 console.log(result)

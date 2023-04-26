@@ -18,10 +18,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+//로그인
+app.post('/login', (req, res) => {
+    const { id, pw } = req.body;
+    const result = connection.query("select * from taxitbl where id=? and pw=?", [id, pw]);
+    // res.send(result.User_ID);
+    if (result.length == 0) {
+        res.send({ 'ok': false })
+    }
+    if (id == 'admin' || id == 'root') {
+        res.send({ 'ok': false })
+    } else {
+        res.send({ 'ok': true })
+    }
+});
+
+
 
 //register
 app.post('/register', (req, res) => {
-    const { id, pw, usr, cartype, area } = req.body;
+    const { id, pw, usr, cartype, area, avl } = req.body;
     if (id == "") {
         res.redirect('register.html')
     } else {
@@ -46,7 +62,7 @@ app.post('/register', (req, res) => {
         `;
             res.end(template);
         } else {
-            result = connection.query("insert into taxitbl values (?, ?,?,?,?)", [id, pw, usr, cartype, area]);
+            result = connection.query("insert into taxitbl values (?,?,?,?,?,?)", [id, pw, usr, cartype, area, avl]);
             console.log(result);
             res.send(result);
         }
@@ -83,8 +99,8 @@ app.post('/selectQuery', (req, res) => {
 
 // request O, query O
 app.post('/insert', (req, res) => {
-    const { id, pw, usr, cartype, area } = req.body;
-    const result = connection.query("insert into taxitbl values (?,?,?,?,?)", [id, pw, usr, cartype, area]);
+    const { id, pw, usr, cartype, area, avl } = req.body;
+    const result = connection.query("insert into taxitbl values (?,?,?,?,?,?)", [id, pw, usr, cartype, area, avl]);
     console.log(result);
     res.send({ 'ok': true, 'user': id, 'job': 'insert' })
     res.redirect('/selectQuery?id=' + req.body.id);
@@ -117,6 +133,21 @@ app.post('/delete', (req, res) => {
             // res.redirect('/select');
 
         }
+    }
+})
+
+// request O, query O
+app.put('/toggle/:id', (req, res) => {
+    const id = req.params.id;
+    let result = connection.query("select * from taxitbl where id=?", [id]);
+    console.log(result);
+    if (result.length == 0) {
+        // template_nodata(res)
+    } else {
+        const avl = result[0].avl === 1 ? 0 : 1; // availability 값을 토글
+        result = connection.query("update taxitbl set avl=? where id=?", [avl, id]); // 첫 번째 result와 동일한 변수에 할당
+        console.log(result);
+        res.send({ 'ok': true, 'user': id, 'job': 'toggle availability' })
     }
 })
 
