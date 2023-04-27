@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     res.send("Web server Started~!!");
 })
 
-app.get('/things', (req, res) => {
+app.get('/available', (req, res) => {
     mongoClient.connect(databaseUrl, function (err, database) {
         if (err != null) {
             res.json({ 'count': 0 })
