@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //MY SQL > MONGO Insert 위한 Select
 function resselect_result(req) {
-    const result = connection.query('SELECT * FROM taxitbl');
+    const result = connection.query('SELECT * FROM taxitbl where avl = 1 ');
     return result;
 }
 
@@ -48,13 +48,12 @@ app.get('/mongoinsert', function (req, res) {
 
     for (var i = 0; i < result.length; i++) {
         var id = result[i].id;
-        var pw = result[i].pw;
         var usr = result[i].usr;
         var cartype = result[i].cartype;
         var area = result[i].area;
         var avl = result[i].avl;
 
-        var taxi = new Taxi({ 'id': id, 'pw': pw, 'usr': usr, 'cartype': cartype, 'area': area, 'avl': avl })
+        var taxi = new Taxi({ 'id': id, 'usr': usr, 'cartype': cartype, 'area': area, 'avl': avl })
 
         taxi.save(function (err, silence) {
             if (err) {
@@ -77,19 +76,20 @@ app.get('/mongoinsert', function (req, res) {
 
 
 app.get('/avltaxiids', function (req, res) {
-    Taxi.find({ avl: 1 }, { _id: 0, id: 1 }, function (err, docs) {
+    Taxi.find({ avl: 1 }, { _id: 0, id: 1, usr: 1, cartype: 1, area: 1, avl: 1 }, function (err, docs) {
         if (err) {
             console.error(err);
             res.status(500).send({ error: '에러입니다!' });
         } else {
-            let ids = [];
+            let taxis = [];
             for (let i = 0; i < docs.length; i++) {
-                ids.push(docs[i].id);
+                taxis.push(docs[i]);
             }
-            res.send({ "ok": true, "job": "availability 확인! 1일경우 사용가능", ids: ids });
+            res.send({ "ok": true, "job": "availability 확인! 1일경우 사용가능", taxis: taxis });
         }
     });
 });
+
 
 
 //nodata 
@@ -118,10 +118,10 @@ app.post('/taxi_login', (req, res) => {
     const result = connection.query("select * from taxitbl where id=? and pw=?", [id, pw]);
     // res.send(result.User_ID);
     if (result.length == 0) {
-        res.send({ 'ok': false })
+        res.redirect('error.html');
     }
     if (id == '01031145933' || id == '01010041004') {
-        res.send({ 'ok': false })
+        res.redirect('check.html?id=' + id);
     } else {
         res.send({ 'ok': true, 'id': id, 'pw': pw, 'job': 'login' })
     }
