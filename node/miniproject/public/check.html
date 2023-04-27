@@ -4,12 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <title>다민택시서비스 회원조회</title>
-    <style>
-        body {
-            background-color: yellow;
-            text-align: center;
-
-        }
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="check.css" />
     </style>
 </head>
 
@@ -20,15 +16,17 @@
     <hr />
     <form action="/insert" target="targetURL" method="post" name="userForm">
         <p>Mobile <input type="text" size="15" name="id" /> <br /></p>
-        <p></p>name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size="15" name="name" /> <br /></p>
-        <p></p>addr &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="15" name="addr" /> <br /></p>
-        <p></p>type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="15" name="favor" /> <br /></p>
-        <input type="button" value="select" onclick='document.targetURL.location.href="/select"' />
-        <input type="button" value="selectQuery" onclick='document.targetURL.location.href="/selectQuery?userid=" 
+        <p>password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size="15" pw="pw" /> <br /></p>
+        <p>user &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="15" usr="usr" /> <br /></p>
+        <p>cartype &nbsp;&nbsp; <input type="text" size="15" cartype="cartype" /> <br /></p>
+        <p>area &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="15" area="area" /> <br /></p>
+        <p>availability &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="15" avl="availability" /> <br /></p>
+        <input type="button" value="사용자리스트" onclick='document.targetURL.location.href="/select"' />
+        <input type="button" value="사용자조회" onclick='document.targetURL.location.href="/selectQuery?userid=" 
          +document.userForm.id.value' />&nbsp;&nbsp;
         <input type="submit" value="post instert" />
-        <button type="submit" formaction="/update">update</button>
-        <button type="submit" formaction="/delete">delete</button>
+        <button type="submit" formaction="회원업데이트">update</button>
+        <button type="submit" formaction="회원 제거">delete</button>
 
 
     </form>
