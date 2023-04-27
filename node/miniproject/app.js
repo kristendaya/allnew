@@ -17,5 +17,9 @@ var main = require('./routes/main.js');
 app.use('/', main);
 
 app.listen(app.get('port'), () => {
-    console.log('8000 port : Server Started...')
+    console.log('8000 Port : Server Started...')
 });
+
+//mongoose configuration
+const mongoose = require("mongoose")
+mongoose.connect("mongodb://192.168.1.18:27017/test")
