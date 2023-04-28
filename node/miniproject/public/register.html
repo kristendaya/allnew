@@ -8,7 +8,7 @@
     <style>
         body {
             text-align: center;
-            background-image: url("icecream.jpg");
+            background-image: url("taxi.jpg");
             background-color: white;
         }
     </style>
@@ -18,14 +18,48 @@
 <body>
     <h3>회원가입</h3>
     <hr />
-    <form action="/insert" target="targetURL" name="userForm" method="post">
+    <form action="/taxi_register" target="targetURL" name="userForm" method="post">
         <p>mobile : <input type="text" size="15" name="id" /></p>
         <p>Password : <input type="password" size="15" name="pw" /></p>
-        <p>name: <input type="text" size="15" name="id" /></p>
-        <p>cartype: <input type="text" size="15" name="id" /></p>
-        <p>area: <input type="text" size="15" name="id" /></p>
-        <input type="submit" value="회원가입" />&nbsp;&nbsp;
-        <input type="reset" value="취소" />
+        <p>name: <input type="text" size="15" name="usr" /></p>
+        <p>cartype:
+            <label><input type="radio" name="cartype" value="van"> Van</label>
+            <label><input type="radio" name="cartype" value="suv"> SUV</label>
+        </p>
+        <p>area:
+            <select name="area">
+                <option value="JG">중구</option>
+                <option value="JN">종로구</option>
+                <option value="YS">용산구</option>
+                <option value="SD">성동구</option>
+                <option value="GJ">광진구</option>
+                <option value="DM">동대문구</option>
+                <option value="JR">중랑구</option>
+                <option value="SB">성북구</option>
+                <option value="GB">강북구</option>
+                <option value="DB">도봉구</option>
+                <option value="NW">노원구</option>
+                <option value="EP">은평구</option>
+                <option value="SW">서대문구</option>
+                <option value="MP">마포구</option>
+                <option value="GS">강서구</option>
+                <option value="GR">구로구</option>
+                <option value="GC">금천구</option>
+                <option value="YD">영등포구</option>
+                <option value="DJ">동작구</option>
+                <option value="GW">관악구</option>
+                <option value="SC">서초구</option>
+                <option value="GN">강남구</option>
+                <option value="SP">송파구</option>
+                <option value="GD">강동구</option>
+            </select>
+        </p>
+        <p>바로운영가능 <select name="avl">
+                <option value="1">이용 가능</option>
+                <option value="0">이용 불가능</option>
+            </select><br><br><br>
+            <input type="submit" value="회원가입" />&nbsp;&nbsp;
+            <input type="reset" value="취소" />
 
 
     </form>
