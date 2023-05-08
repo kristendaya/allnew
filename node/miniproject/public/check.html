@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>다민택시서비스 기사님조회</title>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="check.css" />
+    </style>
+</head>
+
+<body>
+    <h3>ADMIN PAGE 다민TAXI서비스 택시기사님조회</h3>
+
+
+    <hr />
+    <form action="/insert" target="targetURL" name="userForm" method="post">
+        <p>Mobile <input type="text" size="15" name="id" /> <br /></p>
+        <p>password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" size="15" name="pw" /> <br /></p>
+        <p>user &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="15" name="usr" /> <br /></p>
+        <p>cartype &nbsp;&nbsp; <input type="text" size="15" name="cartype" /> <br /></p>
+        <p>area &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size="15" name="area" /> <br /></p>
+        <p>availability &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="avl" size="15" />
+            <br />
+        </p>
+        <input type="button" value="사용자리스트" onclick='document.targetURL.location.href="/select"' />
+        <input type="button" value="사용자조회" onclick='document.targetURL.location.href="/selectQuery?id=" 
+         +document.userForm.id.value' />&nbsp;&nbsp;<br />
+        <!-- <input type="text" name="avl" placeholder="이용 가능한 택시 조회"> -->
+        <input type="button" value="이용가능리스트" onclick='document.targetURL.location.href="/list"' />
+
+        <!-- <input type="button" value="이용가능택시"
+            onclick='document.location.href="/avltaxiids?avl=" + document.userForm.avl.value' />&nbsp;&nbsp; -->
+        <button type="submit" formaction="/update">update</button>
+        <button type="submit" formaction="/delete">delete</button>
+    </form>
+    <hr />
+    <iframe name="targetURL" width="70%" height="500" style="border:none">;
+    </iframe>&nbsp;&nbsp;
+
+
+</body>
+
+<p alighn: middmle></p>
+
+</html>

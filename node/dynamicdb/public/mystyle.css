@@ -1,0 +1,29 @@
+/* mystyle.css */
+body {
+    background-color:
+}
+
+h3 {
+    color: brown;
+}
+
+hr {
+    border: 5px solid white
+}
+
+input {
+    color: blue;
+    font-size: 15px;
+}
+
+button {
+    color: blue;
+    font-size: 15px;
+}
+
+a {
+    font-family: monospace;
+    font-size: 18px;
+    color: brown;
+
+}

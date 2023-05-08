@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <meta charset="utf-8" />
+    <title>로그인 성공!</title>
+    <nav id="menubar">
+
+        <ul>
+            <li><a href="/index.html">HOME</a></li>
+            <li><a href="/user.html">다민 서비스</a></li>
+            <li><a href="/user.html">본인정보확인</a></li>
+            <li style="float:right;"><a href="/index.html">LOGOUT</a></li>
+
+        </ul>
+    </nav>
+
+    <style>
+        #menubar {
+            background: rgb(255, 193, 236);
+        }
+
+        #menubar ul {
+            /* 여백과 패딩 모두 0 */
+            margin: 0;
+            padding: 0;
+            width: 567px;
+            /* 모든 아이템(<li>)을 한 줄에 품을 수 있는 폭 */
+        }
+
+        #menubar ul li {
+            display: inline-block;
+            /* 새 줄로 넘어가지 않게 */
+            list-style-type: none;
+            /* 마커 삭제 */
+            padding: 0px 15px;
+            /* top=bottom=0, left=right=15px */
+        }
+
+        #menubar ul li a {
+            color: white;
+            text-decoration: none;
+            /* 링크 보이지 않게 */
+        }
+
+        #menubar ul li a:hover {
+            color: violet;
+            /* 마우스 올라 갈 때 색 */
+        }
+    </style>
+
+    <script>
+        let id = "";
+        let now = "";
+        function getParameter(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null
+                ? ""
+                : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function sessionStore() {
+            if (!window.sessionStorage) {
+                alert("세션 스토리지를 지원하지 않습니다.");
+                return;
+            } else {
+                if (id == "") {
+                    alert("잘못된 접근 방식입니다!!");
+                    sessionStorage.removeItem("");
+                    location.href = "login.html";
+                } else {
+                    for (var i = 0; i < sessionStorage.key.length; i++) {
+                        if (id == sessionStorage.key(i)) {
+                            sessionStorage.setItem(id, now);
+                            return;
+                        }
+                        sessionStorage.setItem(id, now);
+                        alert(`사용자 ${id} 님이 로그인 하셨습니다.`);
+                    }
+                }
+            }
+        }
+        window.addEventListener("beforeunload", (event) => {
+            event.preventDefault();
+            event.returnValue = "";
+        });
+
+        function logout() {
+            sessionStorage.removeItem(id);
+        }
+    </script>
+</head>
+
+<body onload="login()" onunload="logout()">
+
+
+
+    <h3>오늘도 수고하세요 기사님!! </h3>
+    <h4>
+        오늘의 목표 예상 콜수 :
+        들어온 콜 :
+        <img src="smile.jpg"><br><br>
+    </h4>
+    <hr />
+</body>
+
+</html>

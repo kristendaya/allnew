@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title> 팰린드롬 확인</title>
+</head>
+
+<body>
+    <h3>check Palindrome</h3>
+    <hr>
+    <label>3글자 입력:</label>
+    <input type="text" id="inputNumber">
+    <br><br>
+    <div id="result"></div>
+    <script>
+        function checkPalindrome() {
+            let wordanswer = document.getElementByname(word)
+            if (input.length != 3) {
+                document.getElementById("result").innerHTML = "3글자를 입력하세요.";
+                return;
+            }
+            if (input[0] == input[2]) {
+                document.getElementById("result").innerHTML = "True";
+            } else
+                document.getElementById("result").innerHTML = "False";
+        }
+
+    </script>
+</body>
+<h3> 펠린드론 확인 </h3>
+<form>
+    <input type="radio" name="number"> 숫자
+    <input type="radio" name="word"> 문자
+    <input type="button" value="확인" onclick="checkPalindrome()">
+
+</form>
+
+</html>

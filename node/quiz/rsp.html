@@ -1,0 +1,71 @@
+<!DOCTYPE html>>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <script>
+        function checkWinner() {
+            let users = null;
+            let myrsp = document.getElementsByName("rsp");
+            // document라는 객체안에 getElementbyname메서드를 사용해서 "rsp"라는 네임들을 가져옴.
+            // 가져오면 배열 . name은 중복될수있으니까 배열로 가져옴. 
+            let computer = Math.floor(Math.random() * 3);
+            //floor 는 버린다 
+            var result = ""
+
+            // alert(myrsp[1].value)
+            //alert(typeof rsp_v);
+            //alert(typeof Number(rsp_v));
+
+            //사용자선택값
+            for (let i = 0; i < myrsp.length; i++) {
+                if (myrsp[i].checked == true) {
+                    user = i;
+                }
+            }
+
+            //미입력시
+            if (user == null) {
+                alert("가위,바위,보 중 하나를 선택해주세요!");
+                return;
+            }
+
+            //게임결과
+
+            if (user == computer) {
+                result = "비겼습니다";
+            }
+            else if (
+                (user == 0 && computer == 1) ||
+                (user == 1 && computer == 2) ||
+                (user == 2 && computer == 0)
+            ) {
+                result = "컴터가 이겼따! "
+            } else {
+                result = "이겼습니다~~~~ "
+            }
+
+            var rsp = ["가위", "바위", "보"];
+
+            alert(
+                "컴퓨터의 선택: " +
+                rsp[computer] +
+                "당신의 선택 :" +
+                rsp[user] +
+                "" + result
+            );
+        }
+    </script>
+</head>
+
+
+<form>
+    <input type="radio" name="rsp" value="0" /> 가위
+    <input type="radio" name="rsp" value="1" />바위
+    <input type="radio" name="rsp" value="2" />보
+    <input type="button" value="위너는 누구?" onclick="checkWinner()" />
+</form>
+
+
+
+</html>
