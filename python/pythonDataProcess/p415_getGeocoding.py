@@ -7,7 +7,7 @@ address = '서울 마포구 신수동 451번지 세양청마루아파트 상가 
 
 url_header = 'https://dapi.kakao.com/v2/local/search/address.json?query='
 
-BASE_DIR = os.path.dirname((os.path.dirname(os.path.relpath("./"))))
+BASE_DIR = os.path.dirname((os.path.dirname(os.path.relpath("../"))))
 ##abspath가 절대경로
 secret_file = os.path.join(BASE_DIR, 'secret.json')
 
