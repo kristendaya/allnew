@@ -55,9 +55,10 @@ df = pd.DataFrame(items).rename(index={0:'result'}).T
 print(type(df))
 print(df)
 print('-'* 50)
+##items 로 바꾸는 이유는 키와 밸류값을 자유자재로 쓰기 위해서임.
+##dictionary를 쓰면 key값 만 갖고오게 되잖아. 
 
-
-data =df.loc[['gPntCnt', 'hPntCnt', 'accExamCnt', 'statusDt']]
+data = df.loc[df['국적별'] == '말레이시아']
 print(type(data))
 print(data)
-print('-'* 50)
+print('-' * 50)

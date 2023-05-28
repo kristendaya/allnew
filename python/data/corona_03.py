@@ -52,6 +52,7 @@ print(items)
 print('-'*50)
 #바로 데이터프레임으로 바꾸려면 에러가남
 #dict key is row #(여기서 , orient='index' 이거 빼면 에러임.)
+##why does it change to items? cuz to seperate key and value. available to put together (like dict) if I just connecting itmes.
 df= pd.DataFrame.from_dict(items, orient='index').rename(columns={0:"result"})
 print(type(df))
 print(df)
