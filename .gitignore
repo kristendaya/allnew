@@ -30,6 +30,8 @@ python/**/.venv
 python/**/__pycache__/
 python/**/.idea
 python/secret.json
+python/teamproject/node_modules
+python/teamproject/node/node_modules
 
 ## mongodb
 mongodb/*.json
