@@ -1,0 +1,223 @@
+:root {
+    --background-color: black;
+    --accent-color: #d49466;
+}
+
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    background: black;
+    color: red;
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+/* hr {} */
+
+button {
+    background-color: black;
+    border: none;
+    color: red;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-weight: 800;
+    border-radius: 4px;
+    box-shadow: 2px 2px 1px 1px
+}
+
+label {
+    font-size: 20px;
+    font-weight: 800;
+    color: white
+}
+
+[type="radio"] {
+    vertical-align: middle;
+    appearance: none;
+    border: max(2px, 0.1em) solid gray;
+    border-radius: 50%;
+    width: 1.25em;
+    height: 1.25em;
+    transition: border 0.1s ease-in-out;
+}
+
+[type="radio"]:checked {
+    border: 0.3em solid rgb(255, 0, 0);
+}
+
+select {
+    font-size: 20px;
+    height: 40px;
+    border-radius: 3px;
+    color: white;
+    background-color: black;
+    border: 0 none;
+    border-bottom: 2px solid red;
+    font-weight: 800;
+}
+
+select:hover {
+    border-bottom: 2px solid white;
+}
+
+select option {
+    font-weight: 800;
+}
+
+option:checked,
+option:hover {
+    background-color: gray;
+}
+
+.netflexTitle {
+    font-size: 4em;
+    padding-right: 30px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    background-color: red;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+}
+
+.navbar__logo {
+    font-size: 100px;
+    color: white;
+    margin: 10px 0px;
+}
+
+.navbar__logo i {
+    color: #d49466;
+}
+
+.navbar__menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0px;
+}
+
+.navbar__menu li {
+    padding: 8px 12px;
+
+}
+
+.navbar__menu li a {
+    font-size: 30px;
+}
+
+.navbar__menu :hover {
+    background: #d49466;
+    border-radius: 4px;
+    border: solid red;
+}
+
+.navbar__menu li :hover {
+    border: None;
+}
+
+.navbar__icons {
+    list-style: none;
+    color: white;
+    display: flex;
+    padding-left: 0px;
+}
+
+.navbar__icons li {
+    padding: 8px 12px;
+}
+
+.navbar__toogleBtn {
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 24px;
+    color: #d49466;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+
+    .navbar__menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .navbar__menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar__icons {
+        display: none;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navbar__toogleBtn {
+        display: block;
+    }
+
+    .navbar__menu.active,
+    .navbar__icons.active {
+        display: flex;
+    }
+}
+
+
+.center_nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+}
+
+.li {
+    margin: 0px 5px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #b0bec5;
+    margin: 10px;
+}
+
+#ss1,
+#ss2,
+#ss3,
+#ss4,
+#ss5,
+#ss6,
+#ss7 {
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid #bd0000;
+    border-radius: 5px;
+    background-color: cornsilk;
+}

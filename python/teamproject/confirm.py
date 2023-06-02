@@ -2,7 +2,7 @@ import requests
 import json
 import os.path
 import pydantic
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from pymongo import mongo_client
 from bson.objectid import ObjectId
 import pandas as pd
@@ -12,13 +12,19 @@ from typing import List
 from collections import Counter
 import matplotlib.pyplot as plt
 import numpy as np
-
+from sqlalchemy import create_engine, text
+from PIL import Image
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
 plt.rcParams['font.family'] = 'AppleGothic'
 
 pydantic.json.ENCODERS_BY_TYPE[ObjectId] = str
 
 app = FastAPI()
+
+os.makedirs("./images", exist_ok=True)
+app.mount("/images", StaticFiles(directory="./images"), name='images')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.relpath("./")))
 secret_file = os.path.join(BASE_DIR, './../secret.json')
@@ -45,6 +51,40 @@ HOSTNAME = get_secret("Ubuntu_Hostname")
 client = mongo_client.MongoClient(HOSTNAME)
 mydb = client['project']
 mycol = mydb['importdb']
+
+
+HOSTNAME = get_secret("Mysql_Hostname")
+PORT = get_secret("Mysql_port")
+USERNAME = get_secret("Mysql_Username")
+PASSWORD = get_secret("Mysql_Password")
+DBNAME = get_secret("Mysql_DBname")
+
+DB_URL = f'mysql+pymysql://{USERNAME}:{PASSWORD}@{HOSTNAME}:{PORT}/{DBNAME}'
+
+engine = create_engine(DB_URL, pool_recycle=500)
+
+
+def InsertImageDB(filename):
+    os.chdir('./images')
+## jpg dpi 100x100, png dpi 72x72
+    with open(filename, "rb") as image_file:
+        binary_image = image_file.read()
+        binary_image = base64.b64encode(binary_image)
+        binary_image = binary_image.decode('UTF-8')
+        img_df = pd.DataFrame({'filename':filename,'image_data':[binary_image]})
+        img_df.to_sql('images', con=engine, if_exists='append', index=False)
+    os.chdir('../')
+    return f'Image file : {filename} Inserted~!!'
+
+def SelectImageDB():
+    with engine.connect() as conn:
+        result = conn.execute(text("select * from images"))
+        resultDict = []
+        for row in result:
+            resultDict.append({"id" : row.id, "filename":row.filename})
+        print(resultDict)
+    return resultDict
+
 
 @app.get('/dropdata')
 def dropdata():
@@ -81,34 +121,7 @@ async def getdata(start, end):
 
 
 
-# def getDatebytime(start, end):
-#     myframe = mycol.find({},{"_id":0})
-#     # frame = list(myframe)
-#     df = pd.DataFrame(myframe)
-#     df = df.set_index("국적별")
-#     # print(df['2017년2월'])
-#     # if start == end:
-#     #     df = df['2017년2월']
-#     # else:
-#     print(df)
-#     df = df.loc[:, start : end]
-#     # print(df)
-#     df = df.reset_index()
-#     print(df)
-#     return df
 
-# @app.get('/getdata')
-# async def getdata(start, end):
-#     df = getDatebytime(start,end)
-#     js = df.to_dict(orient="records")
-#     return js
-
-# df = getDatebytime("2017년06월" , "2017년09월")
-# print(df.head())
-# js = df.to_dict(orient="records")
-# print(js[:5])
-# return {"filename": filename, "data": js}
-# def create_bar_plot(df):
 
 @app.get('/graph_data_by_date')
 async def graph_data_by_date(start:str,end:str):
@@ -131,13 +144,12 @@ async def graph_data_by_date(start:str,end:str):
     end = df.columns[-1]
     title = f'{start}부터 {end}까지 입국자수의 합'    
     ax.set_title(title)
-    plt.savefig(filename, dpi=400, bbox_inches= None)
+    plt.savefig(f"./node/public/{filename}", dpi=200, bbox_inches= None)
     plt.xticks(rotation=40, ha='right')
     # plt.yticks(fontsize=10)  # y축 라벨의 글자 크기 조절
+    pic= InsertImageDB(filename)
 
-    plt.show()
     return {"filename": filename}
-    return
 
 #################국가별#################
 
@@ -165,10 +177,10 @@ def create_nationality_graph(nationality: str):
     ax.set_title(f'{nationality} 입국자수')
     ax.tick_params(axis= "x", labelsize=5)    
 
-    plt.savefig(filename, dpi=400, bbox_inches='tight')
+    plt.savefig(f"./node/public/{filename}", dpi=200, bbox_inches='tight')
     plt.show()
-
     return {"filename": filename}
+    
 
 
 # 빼고싶은 국가목록! 이거를 IS IN 해서 쓰자~ 
@@ -199,7 +211,7 @@ async def get_top_countries(start: str, end: str):
     ax.set_title(f'Top 10 Countries ({start} - {end})')
     ax.tick_params(axis="y", labelsize=8)
 
-    plt.savefig(filename, dpi=400, bbox_inches='tight')
+    plt.savefig(f"./node/public/{filename}", dpi=200, bbox_inches='tight')
     plt.close(fig)
 
     # return {"filename": filename}
@@ -210,5 +222,8 @@ async def get_top_countries(start: str, end: str):
         # 'visitors_data': filtered_df.to_dict(orient='records'),
         'top_countries': top.to_dict()
     }
+
+    
+
 
     

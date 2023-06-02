@@ -3,28 +3,14 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>NETFLIX & TRIP</title>
-    <link rel="stylesheet" href="css.css" />
+    <title>Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
     <script>
-        function getHello() {
-            const xhr = new XMLHttpRequest();
-            const method = "GET";
-            const url = "/hello";
-            xhr.open(method, url);
-            xhr.send();
 
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState !== 4) return;
-
-                if (xhr.status === 200) {
-                    console.log(xhr.responseText);
-                    const element = document.getElementById("ss1");
-                    element.innerHTML = xhr.responseText;
-                } else {
-                    console.log("HTTP error", xhr.status, xhr.statusText);
-                }
-            };
-        }
 
         function dropMongo() {
             const xhr = new XMLHttpRequest();
@@ -105,7 +91,7 @@
                 if (xhr.status === 200) {
                     console.log(xhr.response);
                     const element = document.getElementById("ss5");
-                    element.innerHTML = `<img src="graph1_data_by_date.png" alt="Graph by Date">`;
+                    element.innerHTML = `<img src="./graph1_data_by_date.png" alt="Graph by Date">`;
                 } else {
                     console.log("HTTP error", xhr.status, xhr.statusText);
                 }
@@ -126,9 +112,10 @@
                 if (xhr.readyState !== 4) return;
 
                 if (xhr.status === 200) {
-                    console.log(xhr.responseText);
+                    console.log("here", xhr.responseText);
                     const element = document.getElementById("ss6");
-                    element.innerHTML = xhr.responseText;
+                    element.innerHTML = `<img src="./nationalitygraph.png" alt="Graph by Date">`;
+
                 } else {
                     console.log("HTTP error", xhr.status, xhr.statusText);
                 }
@@ -151,7 +138,7 @@
                 if (xhr.status === 200) {
                     console.log(xhr.responseText);
                     const element = document.getElementById("ss7");
-                    element.innerHTML = xhr.responseText;
+                    element.innerHTML = `<img src="./most_countries.png" alt="Graph by Date">`;
                 } else {
                     console.log("HTTP error", xhr.status, xhr.statusText);
                 }
@@ -161,11 +148,33 @@
 </head>
 
 <body>
-    <h1>데이터 조회 및 그래프</h1>
+    <nav class="navbar">
+        <div class="navbar__logo">
+            <i class="fab fa-accusoft"></i>
+            <a href="http://192.168.1.15:8000/">NETFLIX & TRIP</a>
+        </div>
+        <ul class="navbar__menu">
+            <li><a href="http://192.168.1.15:8000/">Home</a></li>
+            <li><a href="/">tourist</a></li>
+            <li><a href="http://192.168.1.15:8000/netflix">netflix</a></li>
+            <li><a href="http://192.168.1.15:8000/justone">JustOne</a></li>
+        </ul>
 
-    <h2>Endpoints:</h2>
-    <button onclick="getHello()">Get Hello</button>
-    <div id="ss1"></div>
+        <ul class="navbar__icons">
+            <li><i class="fab fa-twitter"></i></li>
+            <li><i class="fab fa-facebook-f"></i></li>
+        </ul>
+
+        <a href="#" class="navbar__toogleBtn">
+            <i class="fas fa-bars"></i>
+        </a>
+    </nav>
+
+    <!-- <h3>데이터 조회 및 그래프</h3> -->
+
+    <!-- <h2>hello:</h2> -->
+    <!-- <button onclick="getHello()">Get Hello</button>
+    <div id="ss1"></div> -->
 
     <button onclick="dropMongo()">Drop Mongo</button>
     <div id="ss2"></div>
@@ -191,7 +200,83 @@
 
     <h2>Graph by Nationality:</h2>
     <label for="nationality">Nationality:</label>
-    <input type="text" id="nationality" name="nationality">
+    <select id="nationality">
+        <option value="전 체">전 체</option>
+        <option value="아시아주">아시아주</option>
+        <option value="일  본">일 본</option>
+        <option value="미 주">미 주</option>
+        <option value="미  국">미 국</option>
+        <option value="구 주">구 주</option>
+        <option value="중  국">중 국</option>
+        <option value="대  만">대 만</option>
+        <option value="태  국">태 국</option>
+        <option value="베트남">베트남</option>
+        <option value="싱가포르">싱가포르</option>
+        <option value="홍  콩">홍 콩</option>
+        <option value="필리핀">필리핀</option>
+        <option value="말레이시아">말레이시아</option>
+        <option value="인도네시아">인도네시아</option>
+        <option value="대양 주">대양 주</option>
+        <option value="캐나다">캐나다</option>
+        <option value="중 동">중 동</option>
+        <option value="오스트레일리아">오스트레일리아</option>
+        <option value="러시아(연방)">러시아(연방)</option>
+        <option value="몽  골">몽 골</option>
+        <option value="독  일">독 일</option>
+        <option value="영  국">영 국</option>
+        <option value="아시아주 기타">아시아주 기타</option>
+        <option value="프랑스">프랑스</option>
+        <option value="인  도">인 도</option>
+        <option value="구 주 기타">구 주 기타</option>
+        <option value="미얀마">미얀마</option>
+        <option value="우즈베키스탄">우즈베키스탄</option>
+        <option value="네덜란드">네덜란드</option>
+        <option value="이탈리아">이탈리아</option>
+        <option value="카자흐스탄">카자흐스탄</option>
+        <option value="기 타">기 타</option>
+        <option value="아프리카주">아프리카주</option>
+        <option value="교포">교포</option>
+        <option value="뉴질랜드">뉴질랜드</option>
+        <option value="스페인">스페인</option>
+        <option value="중 동 기타">중 동 기타</option>
+        <option value="아프리카주 기타">아프리카주 기타</option>
+        <option value="터  키">터 키</option>
+        <option value="폴란드">폴란드</option>
+        <option value="스리랑카">스리랑카</option>
+        <option value="방글라데시">방글라데시</option>
+        <option value="브라질">브라질</option>
+        <option value="스위스">스위스</option>
+        <option value="이스라엘">이스라엘</option>
+        <option value="멕시코">멕시코</option>
+        <option value="사우디아라비아">사우디아라비아</option>
+        <option value="스웨덴">스웨덴</option>
+        <option value="덴마크">덴마크</option>
+        <option value="벨기에">벨기에</option>
+        <option value="우크라이나">우크라이나</option>
+        <option value="파키스탄">파키스탄</option>
+        <option value="노르웨이">노르웨이</option>
+        <option value="루마니아">루마니아</option>
+        <option value="미 주 기타">미 주 기타</option>
+        <option value="남아프리카 공화국">남아프리카 공화국</option>
+        <option value="그리스">그리스</option>
+        <option value="콜롬비아">콜롬비아</option>
+        <option value="아르헨티나">아르헨티나</option>
+        <option value="칠  레">칠 레</option>
+        <option value="이집트">이집트</option>
+        <option value="불가리아">불가리아</option>
+        <option value="페  루">페 루</option>
+        <option value="이  란">이 란</option>
+        <option value="나이지리아">나이지리아</option>
+        <option value="이라크">이라크</option>
+        <option value="에콰도르">에콰도르</option>
+        <option value="요르단베네수엘라">요르단베네수엘라</option>
+        <option value="대양주 기타">대양주 기타</option>
+        <option value="피  지">피 지</option>
+        <option value="미상">미상</option>
+        <option value="쿠  바">쿠 바</option>
+        <option value="키리바시">키리바시</option>
+    </select>
+    <!-- <input type="text" id="nationality" name="nationality"> -->
     <button onclick="getGraphByNationality()">Graph by Nationality</button>
     <div id="ss6"></div>
 

@@ -11,36 +11,36 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/hello', (req, res) => {
-    res.send('Hello World~!!');
-});
+// app.get('/hello', (req, res) => {
+//     res.send('Hello World~!!');
+// });
 
-app.get('/dropmongo', (req, res) => {
-    axios
-        .get('http://192.168.1.10:3000/dropdata')
-        .then(response => {
-            console.log('statusCode:', response.status);
-            console.log(response.data);
-            res.send(response.data);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-});
+// app.get('/dropmongo', (req, res) => {
+//     axios
+//         .get('http://192.168.1.10:3000/dropdata')
+//         .then(response => {
+//             console.log('statusCode:', response.status);
+//             console.log(response.data);
+//             res.send(response.data);
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         });
+// });
 
 
-app.get('/insertmongo', (req, res) => {
-    axios
-        .get('http://192.168.1.10:3000/insert_data')
-        .then(response => {
-            console.log('statusCode:', response.status);
-            console.log(response.data);
-            res.send(response.data);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-});
+// app.get('/insertmongo', (req, res) => {
+//     axios
+//         .get('http://192.168.1.10:3000/insert_data')
+//         .then(response => {
+//             console.log('statusCode:', response.status);
+//             console.log(response.data);
+//             res.send(response.data);
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         });
+// });
 
 app.get('/getdata', (req, res) => {
     const start = req.query.start;
