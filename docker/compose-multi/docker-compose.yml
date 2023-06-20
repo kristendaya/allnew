@@ -1,0 +1,12 @@
+#Service definition
+version: "3.3"
+services:
+  server_a:
+    image: nginx
+
+  server_b: 
+    image: redis
+
+
+
+    
