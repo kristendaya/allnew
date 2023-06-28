@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: remoteapi 
+  labels:
+    app: remoteapi 
+spec:
+  replicas: 3                 # three pod
+  selector:
+    matchLabels:
+      app: remoteapi 
+  template:
+    metadata:
+      labels:
+        app: remoteapi 
+    spec:
+      containers:
+      - name: remoteapi 
+        image: kristendaya/remoteapi
+        ports:
+        - containerPort: 8000   # Contianer Port(pod port)
