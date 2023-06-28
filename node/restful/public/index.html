@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <title>ICE CREAM WORLD</title>
-    <link type="text/css" rel="stylesheet" href="mystyle.css" />
-
-</head>
-
-<body>
-    <h3>ICE CREAM WORLD</h3>
-
-    <div class="box">
-        <form action="/login" method="post" name="userForm">
-            <div>
-                <p>Userid <input type="text" size="15" name="id" /> <br /></p>
-                <p>Password <input type="password" size="15" name="pw" /> <br /></p>
-            </div>
-            <div class="box-inn">
-                <input type="submit" value="로그인">
-                <input type="reset" value="취소"><br>
-        </form>
-        <br>
-        <a href="register.html">회원가입 </a>
-
-    </div>
-    </div>
+    <title>RESTful API Example</title>
+  </head>
+  <body>
+    <h3>RESTful API Example</h3>
     <hr />
-
-</body>
-
+    <h4> GET APIs</h4>
+    <hr />
+    <form method="post" action="/api/users/userBody" target="targetURL" name="userForm">
+      <p><input type="button" value="GET /Hello" onclick='document.targetURL.location.href="/Hello"'></p>
+      <p><input type="button" value="GET /api/users" onclick='document.targetURL.location.href="/api/users"'></p>
+      <p>ID : <input type="text" size="15" name="id" /></p>
+      <input type="button" value="GET /api/users/user?params" onclick='document.targetURL.location.href="/api/users/user?user_id="+document.userForm.id.value'>&nbsp;
+      <input type="button" value="GET /api/users/path" onclick='document.targetURL.location.href="/api/users/"+document.userForm.id.value'>&nbsp;
+      <p>Name : <input type="password" size="15" name="name" /></p>
+      <input type="button" value="get /api/users/user?userid & name" onclick='document.targetURL.location.href="/api/users/user?user_id="+document.userForm.id.value+"&name="+document.userForm.name.value'/><br />
+    <hr />
+    <h4> POST APIs</h4>
+    <hr />
+      <button type="submit" formaction="/api/users/userBody">POST => /api/users/userBody</button>&nbsp;&nbsp;
+      <button type="submit" formaction="/api/users/add">POST => /api/users/add</button>&nbsp;&nbsp;
+    </form>
+    <hr />
+    <iframe name="targetURL" width="90%" height="500" style="border: none" src="/api/users"></iframe>
+  </body>
 </html>
