@@ -1,6 +1,12 @@
 {
+<<<<<<< HEAD
   "name": "member",
   "version": "1.0.0",
+=======
+  "name": "restful",
+  "version": "1.0.0",
+  "description": "",
+>>>>>>> 7b324fdeb2f78002a917053649a858604f897334
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
@@ -19,4 +26,15 @@
   },
   "devDependencies": {},
   "description": ""
+=======
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "circular-json": "^0.5.9",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  }
+>>>>>>> 7b324fdeb2f78002a917053649a858604f897334
 }

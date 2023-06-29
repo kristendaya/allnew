@@ -4,7 +4,8 @@
         "@editor.acceptSuggestionOnEnter": "on",
         "@editor.snippetSuggestions": "top",
         "@editor.suggest.preview": true,
-        "@editor.suggest.showMethods": true
+        "@editor.suggest.showMethods": true,
+        "@git.autofetch": true
     },
     "language": {
         "tern_defs": {
