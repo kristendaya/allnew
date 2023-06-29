@@ -1,7 +1,8 @@
 {
-  "name": "node",
+  "name": "weather",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -9,20 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1396.0",
-    "axios": "^1.4.0",
     "body-parser": "^1.20.2",
-    "circular-json": "^0.5.9",
     "cookie-parser": "^1.4.6",
-    "dotenv": "^16.1.4",
+    "data-utils": "^0.0.2",
     "express": "^4.18.2",
-    "fs": "^0.0.1-security",
+    "moment": "^2.29.4",
+    "mongodb": "^4.12.1",
+    "mongoose": "^6.8.0",
     "morgan": "^1.10.0",
-    "mysql2": "^3.2.3",
     "path": "^0.12.7",
-    "request": "^2.88.2",
-    "sdk": "^0.5.0",
-    "sync-mysql": "^3.0.1"
-  },
-  "description": ""
+    "request": "^2.88.2"
+  }
 }
