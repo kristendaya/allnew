@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Yearly Temperature Comparison</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Yearly Temperature Comparison</h1>
+
+    <h2>Temperature Graph</h2>
+    <img src="{{ graph_path }}" alt="Temperature Graph">
+
+    <h2>City Temperatures</h2>
+    <ul>
+        {% for city in cities %}
+        <li>{{ city }}: {{ temperatures[city] }}</li>
+        {% endfor %}
+    </ul>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

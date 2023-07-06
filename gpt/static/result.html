@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>BMI Calculator</h1>
+
+    <div id="result">
+        <h2>Your BMI Result:</h2>
+        <p>Your BMI: {{ bmi }}</p>
+        <p>Category: {{ category }}</p>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
