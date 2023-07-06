@@ -1,17 +1,25 @@
 import React from 'react';
-import Hello from './Hello';
-import Wrapper from './wrapper';
 
-function App() {
- return(
-  <Wrapper>
-  <Hello name="react" color="red" />
-  <Hello color="pink"/>
-  </Wrapper>
-  )
-   /* comment */
+function User({ user, onRemove, onToggle }) {
+   return (
+      <div>
+         <b style={{ corsor: 'pointer', color: user.active ? 'green' : 'black' }}
+            onClick={() => onToggle(user.id)}
+         >{user.username}</b>
+         <span>({user.email})</span>
+         <button onClick={() => onRemove(user.id)}>삭제</button>
+      </div>
+   )
 }
 
-export default App;
- 
- 
+function UserList({ users, onRemove, onToggle }) {
+   return (
+      <div>
+         {users.map((user) => (
+            <User user={user} key={user.id} onRemove={onRemove} onToggle={onToggle} />
+         ))}
+      </div>
+   );
+}
+
+export default UserList; ㄴ
