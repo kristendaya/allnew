@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page - Education Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Admin Page - Education Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="dashboardBtn">Dashboard</a></li>
+                <li><a href="#" id="membersBtn">Members</a></li>
+                <li><a href="#" id="notificationsBtn">Notifications</a></li>
+                <li><a href="#" id="eventsBtn">Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="dashboardSection">
+            <h2>Dashboard</h2>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total Members</h3>
+                    <span class="stat-value" id="memberCount"></span>
+                </div>
+                <div class="stat-card">
+                    <h3>Questions Solved</h3>
+                    <span class="stat-value" id="questionsSolvedCount"></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="membersSection">
+            <h2>Members</h2>
+            <table id="memberTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Joined Date</th>
+                    </tr>
+                </thead>
+                <tbody id="memberTableBody">
+                    <!-- Member data will be dynamically added here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="notificationsSection">
+            <h2>Notifications</h2>
+            <div id="notificationList">
+                <!-- Notification items will be dynamically added here -->
+            </div>
+        </section>
+
+        <section id="eventsSection">
+            <h2>Events</h2>
+            <div id="eventCalendar">
+                <!-- Calendar will be displayed here -->
+            </div>
+            <form id="eventForm">
+                <label for="eventName">Event Name:</label>
+                <input type="text" id="eventName" name="eventName" required>
+                <label for="eventDate">Event Date:</label>
+                <input type="date" id="eventDate" name="eventDate" required>
+                <button type="submit">Create Event</button>
+            </form>
+            <ul id="eventList">
+                <!-- Event items will be dynamically added here -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Your Education Website. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
