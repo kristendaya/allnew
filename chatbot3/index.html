@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot Widget</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="chatbox">
+            <div class="chatbox__messages" id="chatboxMessages">
+                <!-- Chatbox messages will be displayed here -->
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" id="userInput" placeholder="Write a message...">
+                <button id="sendButton" class="chatbox__send--footer send__button">Send</button>
+            </div>
+        </div>
+        <div class="chatbox__button">
+            <button><img src="chatbox-icon.svg" alt="Chat icon"></button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

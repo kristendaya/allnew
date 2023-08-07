@@ -1,0 +1,20 @@
+/* Add styles to your existing webpage content here */
+
+/* Chatbot Widget Styles */
+.chatbot-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.chatbox {
+    width: 320px;
+    max-height: 500px;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* Add more styles for the chatbox here */

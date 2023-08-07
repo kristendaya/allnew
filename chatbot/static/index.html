@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>openai chatbot</title>
+</head>
+<body>
+    <h1>OpenAI chatbot by Kristen</h1>
+    <input id="user-input" type="text" placeholder="대화를 입력하세요">
+    <button id="submit-button" type="button">보내기</button>
+    <ul id="chat-list">
+    </ul>
+
+    <script>
+        const input = document.getElementById("user-input");
+        const button = document.getElementById("submit-button");
+        const chatList = document.getElementById("chat-list");
+
+        button.addEventListener("click", async () => {
+            const prompt = input.value;
+            if (!prompt) return;
+
+            const userItem = document.createElement("li");
+            userItem.textContent = `나: ${prompt}`;
+            chatList.appendChild(userItem);
+
+            const apiResponse = await fetch('/chat/', {
+                method: 'POST',
+                body: JSON.stringify({ prompt }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const data = await apiResponse.json();
+            const response = data.response;
+            const botItem = document.createElement("li");
+            botItem.textContent = `GPT: ${response}`;
+            chatList.appendChild(botItem);
+
+            input.value = "";
+        });
+    </script>
+</body>
+</html>

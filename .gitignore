@@ -1,3 +1,6 @@
+##apikey
+chatbot4_longchain/constants.*
+
 ## .gitignore
 .ftpconfig
 
@@ -24,6 +27,7 @@ maven/target
 node/**/node_modules
 node/**/package-lock.json
 node/config/pool.js
+node_modules
 
 ## python
 python/**/.venv
