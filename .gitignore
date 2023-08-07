@@ -1,5 +1,5 @@
 ##apikey
-chatbot4_longchain/constants.*
+**/constants.*
 
 ## .gitignore
 .ftpconfig
