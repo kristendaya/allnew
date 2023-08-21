@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 // OpenAI API key setup
-const api_key = "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";
+const api_key = "";
 
 // FAQ data
 const faq_data = [
