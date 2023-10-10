@@ -1,2 +1,2 @@
 # allnew
-all new
+my beginning as a developer.
